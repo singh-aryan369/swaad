@@ -63,7 +63,7 @@ export default function About() {
           <div className="about-right">
             <motion.p
               key={story.body}
-              className="about-body"
+              className="about-body lede"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
@@ -72,7 +72,7 @@ export default function About() {
             </motion.p>
             <div className="about-stats">
               <div>
-                <span className="stat-num">25+</span>
+                <span className="stat-num">25<em>+</em></span>
                 <span className="stat-lbl">Years in the kitchen</span>
               </div>
               <div>
@@ -80,7 +80,7 @@ export default function About() {
                 <span className="stat-lbl">Indian regions on the menu</span>
               </div>
               <div>
-                <span className="stat-num">100%</span>
+                <span className="stat-num">100<em>%</em></span>
                 <span className="stat-lbl">Hand-ground masalas</span>
               </div>
             </div>

@@ -44,9 +44,13 @@
   color: var(--c-cream);
   padding: 12px 18px;
   font-family: inherit;
-  font-size: 14px;
+  /* 16px on mobile prevents iOS Safari auto-zoom; 14px is fine on desktop */
+  font-size: 16px;
   width: 100%;
   outline: none;
+}
+@media (min-width: 720px) {
+  .footer-form input { font-size: 14px; }
 }
 .footer-form input::placeholder { color: rgba(236, 237, 222, 0.5); }
 .footer-submit {
@@ -57,7 +61,13 @@
   font-size: 13px;
   white-space: nowrap;
 }
-.footer-submit:hover { background: var(--c-saffron-soft); }
+.footer-submit:hover { background: var(--c-saffron-soft); color: var(--text-dark); }
+/* Saffron success state — warm thank-you, not a corporate green check */
+.footer-submit.is-success,
+.footer-submit.is-success:hover {
+  background: var(--c-saffron);
+  color: var(--c-cream);
+}
 
 .footer-grid {
   display: grid;
@@ -102,6 +112,12 @@
 
 .footer-brand {
   text-align: center;
+  /* Center column needs to breathe — gives the logo a halo of negative space */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  padding: 0 clamp(8px, 2vw, 32px);
 }
 .footer-logo {
   font-family: var(--font-display);
@@ -138,7 +154,7 @@
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--c-sage-light);
-  margin-top: 8px;
+  margin-top: 0;
 }
 
 .footer-col-right { text-align: right; }
@@ -158,16 +174,25 @@
 .footer-socials {
   display: flex;
   align-items: center;
-  gap: 22px;
+  gap: 8px;
 }
+/* 44px hit target with breathing room — meets mobile tap-target minimum */
 .footer-socials a {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
   font-size: 13px;
   color: var(--c-sage);
-  transition: color 0.25s var(--ease-out);
+  transition: color 0.25s var(--ease-out), background 0.25s var(--ease-out), transform 0.25s var(--ease-out);
 }
-.footer-socials a:hover { color: var(--c-saffron-soft); }
+.footer-socials a:hover {
+  color: var(--c-saffron-soft);
+  background: rgba(245, 158, 11, 0.08);
+  transform: translateY(-1px);
+}
 
 @media (max-width: 880px) {
   .footer-cta { grid-template-columns: 1fr; }

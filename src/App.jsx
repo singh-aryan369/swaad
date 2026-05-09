@@ -1,23 +1,24 @@
-import { lazy, Suspense } from 'react';
+import { Suspense } from 'react';
 import { BrowserRouter, Routes, Route, Outlet } from 'react-router-dom';
 import Layout from './components/Layout.jsx';
 import Home from './pages/Home.jsx';
+import RouteBoundary from './components/RouteBoundary.jsx';
+import RouteFallback from './components/RouteFallback.jsx';
+import lazyWithRetry from './lib/lazyWithRetry.js';
 
-// Home is eagerly loaded (it's the landing route). Every other page is split off
-// so the initial JS bundle stays small.
-const MenuPage    = lazy(() => import('./pages/MenuPage.jsx'));
-const TeamPage    = lazy(() => import('./pages/TeamPage.jsx'));
-const GalleryPage = lazy(() => import('./pages/GalleryPage.jsx'));
-const EventsPage  = lazy(() => import('./pages/EventsPage.jsx'));
-const ContactPage = lazy(() => import('./pages/ContactPage.jsx'));
-const NotFound    = lazy(() => import('./pages/NotFound.jsx'));
-
-const RouteFallback = () => <div style={{ minHeight: '60vh' }} aria-hidden="true" />;
+const MenuPage    = lazyWithRetry(() => import('./pages/MenuPage.jsx'));
+const TeamPage    = lazyWithRetry(() => import('./pages/TeamPage.jsx'));
+const GalleryPage = lazyWithRetry(() => import('./pages/GalleryPage.jsx'));
+const EventsPage  = lazyWithRetry(() => import('./pages/EventsPage.jsx'));
+const ContactPage = lazyWithRetry(() => import('./pages/ContactPage.jsx'));
+const NotFound    = lazyWithRetry(() => import('./pages/NotFound.jsx'));
 
 const SuspenseLayout = () => (
-  <Suspense fallback={<RouteFallback />}>
-    <Outlet />
-  </Suspense>
+  <RouteBoundary>
+    <Suspense fallback={<RouteFallback />}>
+      <Outlet />
+    </Suspense>
+  </RouteBoundary>
 );
 
 export default function App() {

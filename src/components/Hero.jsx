@@ -50,7 +50,7 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.2, ease: EASE_OUT }}
           >
-            <span className="dot" /> Authentic Indian Cuisine
+            <span className="dot" aria-hidden="true" /> Authentic Indian Cuisine
           </motion.p>
 
           <motion.h1
@@ -60,7 +60,7 @@ export default function Hero() {
             animate="show"
           >
             <span className="line"><motion.span variants={wordVariant}>Made in India.</motion.span></span>
-            <span className="line"><motion.span variants={wordVariant}>Loved by Everyone.</motion.span></span>
+            <span className="line"><motion.span variants={wordVariant}>Loved <em>everywhere</em>.</motion.span></span>
           </motion.h1>
 
           <motion.div

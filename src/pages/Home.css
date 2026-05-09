@@ -1,7 +1,8 @@
 /* ============ Featured dishes ============ */
 .featured {
+  /* explicit cream so the section stands as a deliberate break between two sage neighbours */
   background: var(--c-cream);
-  padding: clamp(80px, 10vw, 140px) 0;
+  padding: clamp(88px, 11vw, 144px) 0;
 }
 
 .featured-head {
@@ -32,12 +33,14 @@
 .featured-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
+  /* match Menu's dish-grid gap so the two screens feel unified */
+  gap: 28px;
 }
 .featured-card {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 14px;
+  cursor: pointer;
 }
 .featured-img {
   position: relative;
@@ -149,11 +152,11 @@
   color: var(--c-sage-light);
 }
 
-/* ============ Visit CTA ============ */
+/* ============ Visit CTA — dark closer to mirror the Hero open ============ */
 .visit-cta {
   background: var(--bg-dark);
   color: var(--c-cream);
-  padding: clamp(80px, 10vw, 140px) 0;
+  padding: clamp(96px, 12vw, 160px) 0;
   position: relative;
   overflow: hidden;
 }
@@ -161,21 +164,31 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 70% 50%, rgba(217, 119, 6, 0.18), transparent 55%);
+  background: radial-gradient(circle at 70% 50%, rgba(217, 119, 6, 0.22), transparent 55%);
+  pointer-events: none;
 }
 
 .visit-cta-inner { position: relative; }
-.visit-cta-inner .h-section { color: var(--c-cream); }
-.visit-sub { color: var(--c-stone); margin-top: 18px; }
+.visit-cta-inner .h-section { color: var(--c-cream); margin-top: 14px; }
+.visit-sub { color: var(--c-stone); margin-top: 20px; font-size: 16px; }
 
 .visit-actions {
   display: flex;
   gap: 14px;
-  margin-top: 32px;
+  margin-top: 36px;
   flex-wrap: wrap;
 }
-.btn-ghost-light { color: var(--c-cream); }
-.btn-ghost-light:hover { background: var(--c-cream); color: var(--text-dark); }
+/* Primary on dark needs to flip to a light fill so it actually pops */
+.visit-actions .btn-primary {
+  background: var(--c-cream);
+  color: var(--text-dark);
+}
+.visit-actions .btn-primary:hover {
+  background: var(--c-saffron-soft);
+  color: var(--text-dark);
+}
+.btn-ghost-light { color: var(--c-cream); border-color: var(--c-sage); }
+.btn-ghost-light:hover { background: var(--c-cream); color: var(--text-dark); border-color: var(--c-cream); }
 
 /* ============ Responsive ============ */
 @media (max-width: 880px) {

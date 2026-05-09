@@ -93,10 +93,12 @@
 }
 .dish-modal-price {
   font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 28px;
+  font-weight: 600;
+  font-size: 24px;
   color: var(--c-saffron);
   letter-spacing: -0.01em;
+  font-variant-numeric: tabular-nums;
+  margin-top: 2px;
 }
 .dish-modal-desc {
   font-size: 15px;
@@ -143,6 +145,7 @@
 .dish-modal-cta:hover {
   background: #1da851;
   color: var(--c-white);
+  transform: translateY(-2px);
 }
 
 .dish-modal-foot {

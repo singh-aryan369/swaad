@@ -1,0 +1,51 @@
+.route-loader {
+  position: fixed;
+  inset: 0 0 auto 0;
+  height: 3px;
+  z-index: 80;
+  pointer-events: none;
+  background: transparent;
+}
+
+.route-loader-bar {
+  width: 35%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, var(--c-saffron) 30%, var(--c-saffron-soft) 70%, transparent);
+  animation: route-loader-slide 1.1s var(--ease-in-out) infinite;
+}
+
+@keyframes route-loader-slide {
+  0%   { transform: translateX(-120%); }
+  100% { transform: translateX(380%); }
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.route-fallback {
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  padding: 120px 0;
+}
+
+.route-fallback-inner {
+  max-width: 640px;
+  text-align: center;
+  margin-inline: auto;
+}
+
+.route-fallback-inner .eyebrow { display: block; margin-bottom: 16px; }
+.route-fallback-inner .h-section { margin-bottom: 16px; }
+.route-fallback-inner .lede { margin-inline: auto; margin-bottom: 28px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .route-loader-bar { animation: none; opacity: 0.6; width: 100%; }
+}

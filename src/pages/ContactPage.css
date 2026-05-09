@@ -222,11 +222,14 @@
 .reserve-form select,
 .reserve-form textarea {
   font-family: inherit;
-  font-size: 14px;
+  /* 16px floor so iOS Safari doesn't auto-zoom on focus */
+  font-size: 16px;
   letter-spacing: normal;
   text-transform: none;
   color: var(--text-dark);
   font-weight: 400;
+  /* min-height keeps tap targets >= 44px on touch */
+  min-height: 48px;
   padding: 12px 14px;
   border: 1px solid var(--c-stone);
   border-radius: var(--r-sm);
@@ -240,12 +243,14 @@
   border-color: var(--c-saffron);
   background: var(--c-white);
 }
-.reserve-form textarea { resize: vertical; min-height: 92px; }
+.reserve-form textarea { resize: vertical; min-height: 96px; line-height: 1.5; }
 .reserve-submit {
   grid-column: 1 / -1;
   justify-content: center;
   margin-top: 8px;
-  padding: 14px 22px;
+  padding: 16px 24px;
+  min-height: 48px;
+  font-size: 14px;
 }
 
 /* ============ Responsive ============ */

@@ -46,7 +46,11 @@
   justify-content: flex-end;
   padding: 28px;
   color: var(--c-cream);
-  background: linear-gradient(180deg, rgba(0,0,0,0) 30%, rgba(20,22,14,0.85) 100%);
+  /* Two-stop gradient: a soft top dim + a stronger bottom anchor so the title
+     stays legible against any photo without darkening the whole card. */
+  background:
+    linear-gradient(180deg, rgba(20,22,14,0) 40%, rgba(20,22,14,0.9) 100%),
+    linear-gradient(180deg, rgba(20,22,14,0.15), rgba(20,22,14,0) 35%);
   transition: background 0.4s var(--ease-out);
 }
 
@@ -83,14 +87,23 @@
   transition: max-height 0.5s var(--ease-out), opacity 0.4s var(--ease-out), margin-top 0.4s var(--ease-out);
 }
 
-.event-card:hover .event-arrow {
+.event-card:hover .event-arrow,
+.event-card:focus-within .event-arrow {
   transform: translateY(0);
   opacity: 1;
 }
-.event-card:hover .event-desc {
+.event-card:hover .event-desc,
+.event-card:focus-within .event-desc {
   max-height: 80px;
   opacity: 1;
   margin-top: 12px;
+}
+
+/* Touch devices have no hover state — reveal the description and arrow by
+   default so the cards never read as decorative-only on phones / tablets. */
+@media (hover: none) {
+  .event-desc { max-height: 80px; opacity: 1; margin-top: 12px; }
+  .event-arrow { transform: translateY(0); opacity: 1; }
 }
 
 @media (max-width: 720px) {

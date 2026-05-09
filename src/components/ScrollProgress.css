@@ -3,8 +3,10 @@
   top: 0;
   left: 0;
   right: 0;
-  height: 2px;
-  background: var(--c-saffron);
+  height: 3px;
+  /* Saffron gradient reads warm against both ink and cream backgrounds the bar floats over */
+  background: linear-gradient(90deg, var(--c-saffron) 0%, var(--c-saffron-soft) 100%);
+  box-shadow: 0 0 8px rgba(217, 119, 6, 0.35);
   transform-origin: 0%;
   z-index: 200;
   pointer-events: none;

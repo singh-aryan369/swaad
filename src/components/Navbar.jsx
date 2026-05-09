@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu as MenuIcon, X } from 'lucide-react';
 import { NavLink, Link, useLocation } from 'react-router-dom';
@@ -19,6 +19,8 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
   const { pathname } = useLocation();
   const isHome = pathname === '/';
+  const drawerRef = useRef(null);
+  const hamburgerRef = useRef(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
@@ -33,6 +35,40 @@ export default function Navbar() {
 
   useEffect(() => { setOpen(false); }, [pathname]);
 
+  // Drawer: Esc to close + simple focus trap (Tab/Shift+Tab cycle within drawer).
+  // Restores focus to the hamburger trigger when closed — required by WCAG 2.4.3.
+  useEffect(() => {
+    if (!open) return;
+    const drawer = drawerRef.current;
+    if (!drawer) return;
+
+    const focusables = drawer.querySelectorAll(
+      'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+    );
+    const first = focusables[0];
+    const last = focusables[focusables.length - 1];
+    first?.focus();
+
+    const onKey = (e) => {
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        setOpen(false);
+        hamburgerRef.current?.focus();
+        return;
+      }
+      if (e.key !== 'Tab' || focusables.length === 0) return;
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    };
+    document.addEventListener('keydown', onKey);
+    return () => document.removeEventListener('keydown', onKey);
+  }, [open]);
+
   return (
     <>
       <motion.header
@@ -44,9 +80,11 @@ export default function Navbar() {
         <div className="navbar-inner">
           <div className="nav-left">
             <button
+              ref={hamburgerRef}
               className="hamburger"
               aria-label="Open menu"
               aria-expanded={open}
+              aria-controls="nav-drawer"
               onClick={() => setOpen(true)}
             >
               <MenuIcon size={22} />
@@ -83,6 +121,11 @@ export default function Navbar() {
             onClick={() => setOpen(false)}
           >
             <motion.aside
+              ref={drawerRef}
+              id="nav-drawer"
+              role="dialog"
+              aria-modal="true"
+              aria-label="Site navigation"
               className="nav-drawer"
               initial={{ x: '-100%' }}
               animate={{ x: 0 }}
@@ -121,8 +164,9 @@ export default function Navbar() {
                 ))}
               </nav>
               <div className="nav-drawer-foot">
+                <Link to="/contact" className="nav-drawer-cta">Reserve a table</Link>
                 <p>{contact.shortAddress}</p>
-                <p>{contact.phone}</p>
+                <p><a href={`tel:${contact.phoneTel}`}>{contact.phone}</a></p>
               </div>
             </motion.aside>
           </motion.div>

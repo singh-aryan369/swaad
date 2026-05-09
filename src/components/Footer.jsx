@@ -50,7 +50,10 @@ export default function Footer() {
               aria-label="Your email"
               required
             />
-            <button type="submit" className="btn btn-primary footer-submit">
+            <button
+              type="submit"
+              className={`btn btn-primary footer-submit${submitted ? ' is-success' : ''}`}
+            >
               {submitted ? 'Thank you ✓' : 'Subscribe'}
             </button>
           </form>

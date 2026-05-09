@@ -1,4 +1,4 @@
-﻿.hero {
+.hero {
   position: relative;
   min-height: 100vh;
   background: var(--bg-dark);
@@ -20,9 +20,10 @@
 .hero-overlay {
   position: absolute;
   inset: 0;
+  /* Warmer right-edge falloff lets the dish photography breathe */
   background:
-    linear-gradient(105deg, rgba(20,22,14,0.92) 0%, rgba(20,22,14,0.6) 38%, rgba(20,22,14,0.1) 65%, transparent 95%),
-    linear-gradient(180deg, transparent 60%, rgba(20,22,14,0.8) 100%);
+    linear-gradient(105deg, rgba(20,22,14,0.94) 0%, rgba(20,22,14,0.62) 38%, rgba(20,22,14,0.12) 65%, transparent 95%),
+    linear-gradient(180deg, transparent 55%, rgba(20,22,14,0.85) 100%);
 }
 
 .hero-content {
@@ -35,12 +36,13 @@
 .hero-eyebrow {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
+  font-family: var(--font-body);
   font-size: 12px;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--c-sage-light);
-  margin-bottom: 24px;
+  margin-bottom: 28px;
   font-weight: 500;
 }
 .hero-eyebrow .dot {
@@ -48,9 +50,9 @@
   background: var(--c-saffron-soft);
   border-radius: 50%;
   box-shadow: 0 0 0 6px rgba(245, 158, 11, 0.18);
-  animation: pulse 2.4s ease-in-out infinite;
+  animation: heroPulse 2.4s ease-in-out infinite;
 }
-@keyframes pulse {
+@keyframes heroPulse {
   0%, 100% { box-shadow: 0 0 0 6px rgba(245,158,11,0.18); }
   50% { box-shadow: 0 0 0 10px rgba(245,158,11,0.05); }
 }
@@ -67,11 +69,16 @@
   display: inline-block;
   will-change: transform;
 }
+/* Saffron emphasis ties the headline to the brand accent */
+.hero-title em {
+  font-style: italic;
+  color: var(--c-saffron-soft);
+}
 
 .hero-actions {
   display: flex;
   gap: 14px;
-  margin-top: 40px;
+  margin-top: 44px;
   flex-wrap: wrap;
 }
 .hero-actions .btn-primary {
@@ -85,25 +92,39 @@
 .hero-actions .btn-ghost {
   color: var(--c-cream);
 }
+.hero-actions .btn-ghost:hover {
+  background: var(--c-cream);
+  color: var(--c-ink);
+}
 
 .hero-scroll {
   position: absolute;
-  bottom: 32px;
+  bottom: 36px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 2;
   display: flex;
   align-items: center;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
   font-size: 11px;
-  letter-spacing: 0.3em;
+  letter-spacing: 0.32em;
   text-transform: uppercase;
   color: var(--c-sage-light);
+  opacity: 0.85;
+  transition: opacity 0.3s var(--ease-out);
+}
+.hero-scroll:hover { opacity: 1; }
+
+@media (max-width: 880px) {
+  .hero-content { padding-top: 132px; }
+  .hero-eyebrow { margin-bottom: 24px; }
+  .hero-actions { margin-top: 36px; }
 }
 
 @media (max-width: 720px) {
-  .hero-content { padding-top: 140px; }
-  .hero-actions { flex-direction: column; align-items: stretch; }
+  .hero-content { padding-top: 144px; }
+  .hero-actions { flex-direction: column; align-items: stretch; gap: 12px; }
   .hero-actions .btn { justify-content: center; }
+  .hero-scroll { bottom: 24px; }
 }

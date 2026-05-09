@@ -107,8 +107,11 @@
 
 @media (max-width: 880px) {
   .festival-grid { grid-template-columns: 1fr; }
+  /* Side-by-side image/copy on a full-width card looks lopsided — go vertical. */
+  .festival-card { grid-template-columns: 1fr; }
+  .festival-img { aspect-ratio: 16/9; }
+  .festival-body { padding: 24px 24px 28px; }
 }
 @media (max-width: 520px) {
-  .festival-card { grid-template-columns: 1fr; }
   .festival-img { aspect-ratio: 16/10; }
 }

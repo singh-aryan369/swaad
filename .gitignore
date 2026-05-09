@@ -16,6 +16,11 @@ firebase-debug.*.log
 .DS_Store
 Thumbs.db
 
+# Local tooling / artifacts (not part of the website source)
+.claude
+screenshots
+scripts
+
 # Env (when you add Firebase services later)
 .env
 .env.local
