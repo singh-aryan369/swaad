@@ -1,0 +1,266 @@
+/* ============ Map section — Google-Maps style layout ============ */
+.map-section {
+  padding: clamp(40px, 6vw, 80px) 0;
+  background: var(--c-cream);
+}
+
+.map-shell {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  gap: 24px;
+  height: clamp(540px, 70vh, 720px);
+}
+
+.map-card {
+  background: var(--c-white);
+  border-radius: var(--r-md);
+  padding: 28px 26px;
+  box-shadow: 0 12px 32px rgba(20, 22, 14, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+.map-card::-webkit-scrollbar { width: 6px; }
+.map-card::-webkit-scrollbar-thumb { background: var(--c-stone); border-radius: 3px; }
+
+.map-card-head {
+  border-bottom: 1px solid var(--c-stone);
+  padding-bottom: 16px;
+  margin-bottom: 4px;
+}
+.map-card-title {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 36px;
+  color: var(--text-dark);
+  letter-spacing: 0.5px;
+  line-height: 1;
+}
+.map-card-sub {
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--c-olive);
+  margin-top: 4px;
+}
+.map-card-rating {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+.rating-num { font-weight: 600; color: var(--text-dark); }
+.rating-stars { display: inline-flex; gap: 1px; color: var(--c-saffron); }
+.rating-count { color: var(--text-muted); font-size: 12px; }
+
+.map-card-row {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+.map-card-row > svg {
+  color: var(--c-saffron);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.map-card-row p {
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--text-dark);
+}
+.map-card-row .muted {
+  color: var(--text-muted);
+  font-size: 12px;
+  margin-top: 2px;
+}
+.map-card-row a {
+  color: inherit;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.25s var(--ease-out);
+}
+.map-card-row a:hover { border-bottom-color: var(--text-dark); }
+
+.map-card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 6px;
+  font-size: 13px;
+  color: var(--c-saffron) !important;
+  border: none !important;
+  font-weight: 500;
+}
+.map-card-link:hover { color: var(--c-olive) !important; }
+
+.hours { display: flex; flex-direction: column; gap: 4px; flex: 1; }
+.hours-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: var(--text-dark);
+}
+.hours-row .closed { color: var(--c-saffron); font-style: italic; }
+
+.map-card-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 8px;
+}
+.map-card-actions .btn {
+  padding: 11px 16px;
+  font-size: 13px;
+  justify-content: center;
+}
+
+.map-card-socials {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  padding-top: 16px;
+  border-top: 1px solid var(--c-stone);
+  margin-top: auto;
+  font-size: 13px;
+}
+.map-card-socials a {
+  color: var(--text-muted);
+  transition: color 0.25s var(--ease-out);
+}
+.map-card-socials a:hover { color: var(--c-saffron); }
+
+/* ============ Map iframe wrapper with floating pin ============ */
+.map-frame {
+  position: relative;
+  border-radius: var(--r-md);
+  overflow: hidden;
+  background: var(--c-stone);
+  box-shadow: 0 12px 32px rgba(20, 22, 14, 0.08);
+}
+.map-frame iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  filter: saturate(1.05);
+}
+
+.map-pin {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -100%);
+  background: var(--c-saffron);
+  color: var(--c-cream);
+  width: 44px;
+  height: 44px;
+  border-radius: 50% 50% 50% 0;
+  rotate: -45deg;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+  pointer-events: none;
+  z-index: 2;
+}
+.map-pin svg { rotate: 45deg; }
+.map-pin-pulse {
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  background: rgba(217, 119, 6, 0.4);
+  animation: mapPulse 2.4s var(--ease-out) infinite;
+  rotate: 45deg;
+}
+@keyframes mapPulse {
+  0%   { transform: scale(0.8); opacity: 0.7; }
+  100% { transform: scale(2);   opacity: 0;   }
+}
+
+/* ============ Reservation form ============ */
+.reserve {
+  background: var(--bg-soft);
+  padding: clamp(72px, 10vw, 120px) 0;
+}
+
+.reserve-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: clamp(40px, 6vw, 80px);
+  align-items: start;
+}
+
+.reserve-intro { display: flex; flex-direction: column; gap: 18px; padding-top: 16px; }
+
+.reserve-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  background: var(--c-white);
+  padding: 32px;
+  border-radius: var(--r-md);
+  box-shadow: 0 16px 48px rgba(20, 22, 14, 0.06);
+}
+.reserve-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+.reserve-form label.full { grid-column: 1 / -1; }
+.reserve-form input,
+.reserve-form select,
+.reserve-form textarea {
+  font-family: inherit;
+  font-size: 14px;
+  letter-spacing: normal;
+  text-transform: none;
+  color: var(--text-dark);
+  font-weight: 400;
+  padding: 12px 14px;
+  border: 1px solid var(--c-stone);
+  border-radius: var(--r-sm);
+  background: var(--c-cream);
+  transition: border-color 0.25s var(--ease-out), background 0.25s var(--ease-out);
+  outline: none;
+}
+.reserve-form input:focus,
+.reserve-form select:focus,
+.reserve-form textarea:focus {
+  border-color: var(--c-saffron);
+  background: var(--c-white);
+}
+.reserve-form textarea { resize: vertical; min-height: 92px; }
+.reserve-submit {
+  grid-column: 1 / -1;
+  justify-content: center;
+  margin-top: 8px;
+  padding: 14px 22px;
+}
+
+/* ============ Responsive ============ */
+@media (max-width: 1024px) {
+  .map-shell {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+  .map-card { order: 2; max-height: none; }
+  .map-frame { order: 1; height: 420px; }
+}
+
+@media (max-width: 720px) {
+  .map-card { padding: 22px 20px; }
+  .map-card-actions { grid-template-columns: 1fr; }
+  .reserve-grid { grid-template-columns: 1fr; }
+  .reserve-form { grid-template-columns: 1fr; padding: 22px; }
+}

@@ -1,0 +1,8 @@
+.notfound-cta {
+  background: var(--c-cream);
+  padding: 80px 0 120px;
+  text-align: center;
+}
+.notfound-cta .btn {
+  display: inline-flex;
+}

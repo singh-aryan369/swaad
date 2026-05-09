@@ -1,0 +1,83 @@
+.gallery {
+  background: var(--c-cream);
+  padding: clamp(80px, 10vw, 140px) 0;
+  color: var(--text-dark);
+}
+
+.gallery-head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 14px;
+  max-width: 720px;
+  margin: 0 auto 56px;
+}
+.gallery-sub { text-align: center; }
+
+/* Masonry-ish grid using grid-row spans */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 180px;
+  gap: 12px;
+}
+
+.gallery-tile {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--r-md);
+  background: var(--c-stone);
+  cursor: pointer;
+}
+.gallery-tile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s var(--ease-out), filter 0.5s var(--ease-out);
+}
+.gallery-tile:hover img {
+  transform: scale(1.06);
+}
+
+/* Caption appears on hover */
+.gallery-cap {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: 16px 18px;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--c-cream);
+  background: linear-gradient(180deg, transparent 0%, rgba(20, 22, 14, 0.85) 100%);
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.4s var(--ease-out), transform 0.4s var(--ease-out);
+}
+.gallery-tile:hover .gallery-cap {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Spans for the masonry effect */
+.gallery-tile--tall   { grid-row: span 2; }
+.gallery-tile--wide   { grid-column: span 2; }
+.gallery-tile--square { grid-row: span 1; }
+
+@media (max-width: 880px) {
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 160px;
+  }
+  .gallery-tile--wide { grid-column: span 2; }
+  .gallery-tile--tall { grid-row: span 2; }
+}
+
+@media (max-width: 520px) {
+  .gallery-grid {
+    grid-template-columns: 1fr;
+    grid-auto-rows: 220px;
+  }
+  .gallery-tile--wide { grid-column: span 1; }
+  .gallery-tile--tall { grid-row: span 1; }
+}

@@ -1,0 +1,22 @@
+node_modules
+dist
+dist-ssr
+.vite
+*.local
+
+# Firebase
+.firebase
+firebase-debug.log
+firebase-debug.*.log
+
+# Editor
+.vscode
+.idea
+*.swp
+.DS_Store
+Thumbs.db
+
+# Env (when you add Firebase services later)
+.env
+.env.local
+.env.*.local

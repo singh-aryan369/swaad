@@ -1,0 +1,684 @@
+{
+  "_meta": {
+    "description": "Authenticity corrections to employment_data.json — verified against official statute portals on 2026-05-05",
+    "verification_date": "2026-05-05",
+    "total_rules_audited": 264,
+    "rules_corrected": 60,
+    "format": "Each entry replaces the corresponding rule in the original JSON (matched by rule_id). Only fields that changed are shown in 'updated_fields'; unchanged fields remain as in the original.",
+    "sources_used": [
+      "planalto.gov.br (Brazil)",
+      "gesetze-im-internet.de + bmas.de (Germany)",
+      "legifrance.gouv.fr + service-public.fr (France)",
+      "indiacode.nic.in + indiankanoon.org + epfindia.gov.in (India)",
+      "officialgazette.gov.ph + dole.gov.ph (Philippines)",
+      "labour.go.th + sso.go.th (Thailand)",
+      "legislation.gov.uk + gov.uk + acas.org.uk (UK)",
+      "law.cornell.edu + dol.gov + eeoc.gov + ftc.gov (US)",
+      "thuvienphapluat.vn + molisa.gov.vn (Vietnam)"
+    ]
+  },
+
+  "BR_EMP_002": {
+    "issue": "Two-installment deadlines (Nov 30 / Dec 20) come from Law 4.749/1965, not Law 4.090/1962",
+    "updated_fields": {
+      "source_law": "Law 4.090/1962 Art. 1 (existence of 13th salary); Law 4.749/1965 Arts. 1-2 (two-installment deadlines); Federal Constitution Art. 7, VIII",
+      "law_text": "Law 4.090/1962 Art. 1: estabelece a gratificação natalina (13º salário). Law 4.749/1965 Art. 1: '13º salário será pago pelo empregador até o dia 20 de dezembro de cada ano.' Art. 2: 'Entre os meses de fevereiro e novembro de cada ano, o empregador pagará, como adiantamento da gratificação, de uma só vez, metade do salário recebido pelo empregado no mês anterior.'",
+      "notes": "Law 4.090/1962: https://www.planalto.gov.br/ccivil_03/leis/l4090.htm. Law 4.749/1965 (two-installment rule): https://www.planalto.gov.br/ccivil_03/leis/l4749.htm. Constitution Art. 7: https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm"
+    }
+  },
+
+  "BR_EMP_005": {
+    "issue": "Deposit deadline is currently still day 7 (Law 14.438/2022 amendment to day 20 awaits FGTS Digital activation)",
+    "updated_fields": {
+      "statutory_minimum": {
+        "monthly_deposit_rate": "8% of gross salary",
+        "termination_fine_without_cause": "40% of total FGTS balance",
+        "deposit_deadline": "7th of following month (Law 14.438/2022 amendment to day 20 takes effect upon FGTS Digital arrecadação activation — verify current status)"
+      },
+      "notes": "FGTS Law: https://www.planalto.gov.br/ccivil_03/leis/l8036consol.htm. Law 14.438/2022 amends Art. 15 §6 deadline to day 20 contingent on FGTS Digital activation: https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2022/lei/L14438.htm. As of verification date, the operative deadline remains day 7."
+    }
+  },
+
+  "BR_EMP_008": {
+    "issue": "Minimum wage outdated — R$1,412 was 2024 rate; R$1,518 effective 1 January 2025",
+    "updated_fields": {
+      "statutory_minimum": {
+        "national_minimum_wage_2025": "R$1,518.00/month",
+        "national_minimum_wage_2024": "R$1,412.00/month",
+        "category_floor": "Per applicable CCT/ACT",
+        "deduction_limit": "Net pay cannot fall below minimum wage"
+      },
+      "remediation_template": "The Employee's monthly remuneration shall not be less than the applicable national minimum wage (currently R$1,518.00 per month, effective 1 January 2025 per Decree 12.342/2024 / Law 15.077/2024) or the applicable professional category floor wage (piso salarial) as established by the relevant Collective Bargaining Agreement (CCT/ACT), whichever is greater, in accordance with Federal Constitution Art. 7, IV and CLT Art. 76.",
+      "last_updated": "2025-01-01",
+      "notes": "Minimum wage decree 2025: https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2024/decreto/D12342.htm. LC 103/2000 (state floors): https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp103.htm. Always verify current rate before issuing contracts."
+    }
+  },
+
+  "BR_EMP_010": {
+    "issue": "Rule presented as if statutory; actually entirely jurisprudential",
+    "updated_fields": {
+      "law_text": "No specific statute governs employment non-compete in Brazil. Doctrinal/jurisprudential standards derive from Federal Constitution Art. 5, XIII (free exercise of profession) and Civil Code Art. 421-422 (good faith and social function of contracts). Labour courts (TST and TRTs) have established that a valid post-employment non-compete must be: (1) limited in time (jurisprudential ceiling around 2 years, by analogy to Civil Code Art. 1.147 trespasse 5-year max), (2) limited in geographic scope, (3) limited in scope of restricted activity, (4) accompanied by financial compensation. There is no statutory minimum compensation; compensation must be 'reasonable' under good-faith principles.",
+      "notes": "Important: these are JURISPRUDENTIAL standards, NOT statutory rules. Key precedents: TST RR-2402-45.2010.5.02.0037 and various TRT decisions. See: https://www.tst.jus.br. The 1/3 monthly salary minimum mentioned in some sources is a doctrinal benchmark, not a statutory or universal court-imposed floor."
+    }
+  },
+
+  "BR_EMP_014": {
+    "issue": "'Anonymous reporting' is technically 'confidential reporting' under Law 14.457/2022",
+    "updated_fields": {
+      "statutory_minimum": {
+        "reporting_channel": "Confidential (sigiloso) — identity of complainant must be protected; not strictly required to be anonymous, for companies with CIPA",
+        "training_frequency": "Annual minimum",
+        "internal_rules": "Must include harassment prevention conduct rules"
+      },
+      "common_violation": "No harassment prevention policy. No confidential reporting channel preserving complainant identity for companies with CIPA. Contract enables abusive management practices. No annual harassment prevention training. Retaliation against complainants."
+    }
+  },
+
+  "BR_EMP_020": {
+    "issue": "Conflates sobreaviso (statutory standby pay) with right-to-disconnect (no statutory basis)",
+    "updated_fields": {
+      "law_text": "CLT Art. 244 §2 (originally for railway workers, applied by analogy per TST Súmula 428 to other workers): 'Considera-se de sobreaviso o empregado efetivo, que permanecer em sua própria casa, aguardando a qualquer momento o chamado para o serviço.' TST Súmula 428, II: extends sobreaviso treatment to employees subjected to employer monitoring via telematic devices during rest periods. NOTE: 'Right to disconnect' (direito à desconexão) is not codified in Brazilian statute — it is a doctrinal/jurisprudential concept derived from CF Art. 7, XIII/XV combined with CLT rest provisions.",
+      "notes": "The 1/3 hourly rate is for sobreaviso (CLT Art. 244 §2), which is conceptually distinct from a 'right to disconnect.' Brazil does NOT have a statutory right to disconnect equivalent to France's L2242-17. TST Súmula 428: https://www.tst.jus.br/sumulas. Mere provision of a mobile phone is not sufficient to characterize sobreaviso."
+    }
+  },
+
+  "DE_EMP_002": {
+    "issue": "KSchG §23 has dual regime (5 vs 10 employees by hire date pre/post 2003); rule oversimplifies",
+    "updated_fields": {
+      "statutory_minimum": {
+        "waiting_period": "6 months continuous employment",
+        "minimum_company_size_post_2003": "More than 10 employees (for employees first hired after 31 December 2003)",
+        "minimum_company_size_pre_2004": "More than 5 employees (for employees first hired on or before 31 December 2003 — legacy rule still applies to those individuals)",
+        "valid_reasons": ["conduct-related", "person-related", "urgent operational requirement"]
+      },
+      "notes": "KSchG §23(1) was amended effective 1 January 2004 to raise the threshold from 5 to 10 employees, but with a grandfathering clause for employees in service before that date. This dual regime is still operative. Source: https://www.gesetze-im-internet.de/kschg/__23.html"
+    }
+  },
+
+  "DE_EMP_008": {
+    "issue": "Krankenkasse 70% sick pay derives from SGB V §47, not EntgFG (citation incomplete)",
+    "updated_fields": {
+      "source_law": "EntgFG §3, §4 (continued employer pay during first 6 weeks); SGB V §47 (Krankengeld at approx. 70% gross / max 90% net thereafter)",
+      "law_text": "EntgFG §3(1): 6 weeks employer-paid sick leave at full contractual rate. EntgFG §4: continued remuneration calculation. SGB V §47(1): Sickness benefit (Krankengeld) is 70% of regular gross remuneration (and no more than 90% of net), payable from the statutory health insurance fund after the 6-week employer-pay period expires."
+    }
+  },
+
+  "DE_EMP_009": {
+    "issue": "Two-week notification window is in MuSchG §17, not §18",
+    "updated_fields": {
+      "source_law": "MuSchG §17 (dismissal prohibition + 2-week notification window); MuSchG §18 (parental leave dismissal protection — exceptional supervisory authority approval); ADCT principle"
+    }
+  },
+
+  "DE_EMP_011": {
+    "issue": "Dismissal protection is 8 weeks pre-leave for under-3, 14 weeks pre-leave for ages 3–8 — rule omits the 14-week rule",
+    "updated_fields": {
+      "statutory_minimum": {
+        "total_duration_years": 3,
+        "usable_until_child_age_years": 8,
+        "dismissal_protection_pre_leave_under_age_3": "From 8 weeks before start of parental leave through its end",
+        "dismissal_protection_pre_leave_age_3_to_8": "From 14 weeks before start of parental leave through its end"
+      },
+      "law_text": "BEEG §18(1): The employer may not terminate the employment relationship from the time of application for parental leave, at the earliest 8 weeks before the start of parental leave (for leave taken before the child's 3rd birthday) or at the earliest 14 weeks before the start of parental leave (for leave taken between the child's 3rd and 8th birthday), and during parental leave."
+    }
+  },
+
+  "DE_EMP_017": {
+    "issue": "Long-term care insurance is 3.6% in 2025, NOT 3.4% (raised mid-2023 per PUEG)",
+    "updated_fields": {
+      "statutory_minimum": {
+        "pension_total_percent": 18.6,
+        "pension_employer_percent": 9.3,
+        "health_base_total_percent": 14.6,
+        "health_employer_base_percent": 7.3,
+        "long_term_care_total_percent_2025": 3.6,
+        "long_term_care_childless_surcharge_percent": 0.6,
+        "unemployment_total_percent": 2.6,
+        "note": "Long-term care insurance increased from 3.05% (pre-2023) to 3.4% (mid-2023) to 3.6% (2025) under PUEG. Childless persons over 23 pay an additional 0.6% surcharge (total 4.2%). Verify current rates at https://www.deutsche-rentenversicherung.de"
+      }
+    }
+  },
+
+  "DE_EMP_019": {
+    "issue": "BGB §630 generally inapplicable to standard employees post-2003 reform; GewO §109 is operative",
+    "updated_fields": {
+      "source_law": "GewO §109 (operative for employees); BGB §630 (general service-contract reference, residual application)",
+      "law_text": "GewO §109(1): The employee is entitled, on termination of the employment relationship, to demand from the employer a written certificate concerning the employment and its duration. On request, the certificate must also cover the performance and conduct of the employee during the employment relationship. (BGB §630 retains a parallel provision but for employment relationships, GewO §109 takes precedence post the 2003 Civil Code/Trade Code reform.)"
+    }
+  },
+
+  "FR_EMP_001": {
+    "issue": "Compensation minimum '1/3 monthly salary' is from collective agreements, not Cassation; 'Barbier trilogy' has 3 docket numbers",
+    "updated_fields": {
+      "law_text": "Cour de cassation, chambre sociale, 10 juillet 2002 (arrêts Barbier — three companion decisions n°99-43.334, 00-45.135, 00-45.387): A non-competition clause requires four cumulative conditions: (1) indispensable to protect legitimate business interests, (2) limited in time, (3) limited in space, (4) financial compensation. The minimum amount of compensation is set by the applicable collective bargaining agreement (commonly 1/3 of average gross monthly salary in many CBAs); courts will void clauses with 'derisory' or 'manifestly insufficient' compensation but do not impose a universal statutory floor.",
+      "statutory_minimum": {
+        "compensation_minimum": "Per applicable convention collective (commonly 1/3 of gross monthly salary; varies by industry — Syntec sets 1/3, banking sectors set 2/3 for some categories)",
+        "max_duration": "Generally 2 years per case law and CBAs",
+        "required_form": "Must be written in the employment contract or a signed amendment",
+        "four_conditions": ["written form", "legitimate business interest", "limited time and geography", "financial compensation"]
+      }
+    }
+  },
+
+  "FR_EMP_004": {
+    "issue": "SMIC effective date wrong — €11.88/hour took effect 1 November 2024 (Décret 2024-951), not 1 January 2025",
+    "updated_fields": {
+      "statutory_minimum": {
+        "hourly_rate_eur": 11.88,
+        "monthly_full_time_eur": 1801.8,
+        "effective_from": "2024-11-01",
+        "verify_current_rate_url": "https://www.service-public.fr/particuliers/vosdroits/F2300"
+      },
+      "remediation_template": "The Employee's gross remuneration shall be [amount] per [hour/month], which shall not be less than the applicable SMIC as set pursuant to Articles L3231-2 et seq. of the French Labour Code, currently €11.88 per hour gross effective 1 November 2024 (Décret 2024-951 of 23 October 2024).",
+      "last_updated": "2024-11-01",
+      "notes": "SMIC raised mid-cycle by Décret 2024-951 of 23 October 2024 (no 1 January 2025 revaluation). Current rates: https://www.service-public.fr/particuliers/vosdroits/F2300"
+    }
+  },
+
+  "FR_EMP_011": {
+    "issue": "Paternity leave is 25 days + 4 mandatory (not 3); also L1225-19 governs 26-week 3rd-child maternity",
+    "updated_fields": {
+      "source_law": "Code du travail L1225-1, L1225-17 (16-week standard maternity), L1225-19 (26-week maternity for 3rd+ child), L1225-35 (paternity 25 days + 4 mandatory at start, plus separate 3-day birth leave under L3142-1)",
+      "statutory_minimum": {
+        "maternity_total_standard_weeks": 16,
+        "maternity_third_child_weeks": 26,
+        "paternity_days_total": 25,
+        "paternity_mandatory_days_at_start": 4,
+        "birth_leave_days_separate": 3,
+        "dismissal_protection_weeks_after_maternity": 10
+      }
+    }
+  },
+
+  "FR_EMP_019": {
+    "issue": "Forfait mobilités durables ceiling is €700/year, not €800 (€800 only when combined with public transport)",
+    "updated_fields": {
+      "statutory_minimum": {
+        "public_transport_reimbursement_percent": 50,
+        "applies_to": "All employees with a transport subscription",
+        "part_time_under_50_percent": "Pro-rated",
+        "voluntary_sustainable_mobility_allowance_eur_year": 700,
+        "combined_with_public_transport_ceiling_eur_year": 800
+      },
+      "notes": "Forfait mobilités durables (FMD) ceiling: €700/year tax-exempt standalone; €800/year only when cumulated with public transport reimbursement. Mandatory in all French metropolitan areas. URSSAF guidance: https://www.urssaf.fr/accueil/employeurs/frais-professionnels/frais-transport.html"
+    }
+  },
+
+  "FR_EMP_021": {
+    "issue": "Sunday work '100% premium' is not a universal legal floor; depends on dérogation type",
+    "updated_fields": {
+      "statutory_minimum": {
+        "sunday_rest_principle": "Mandatory default",
+        "exceptions_require": "Prefectoral permit or legal zone designation",
+        "voluntary_consent_required": true,
+        "sunday_premium": "Set by applicable derogation regime / collective agreement (NOT a universal 100% floor — e.g., 'dimanches du maire' under L3132-26 imposes 100%, but other regimes may differ)",
+        "compensatory_rest": "Required"
+      },
+      "notes": "100% premium applies only to specific dérogation regimes (e.g., dimanches du maire L3132-26, ZTI/zones touristiques internationales). Otherwise compensation governed by CBA or unilateral employer decision. Sunday work zone map: https://travail-emploi.gouv.fr/droit-du-travail/les-conges-et-les-absences/article/le-repos-dominical"
+    }
+  },
+
+  "FR_EMP_022": {
+    "issue": "Article numbering off — night work thresholds are in L3122-5; L3122-8/9 cover other matters",
+    "updated_fields": {
+      "source_law": "Code du travail L3122-1 (night work definition 21:00-06:00), L3122-2, L3122-5 (night-worker threshold definition), L3122-7 (max consecutive hours), L3122-8 (workload limits), L3122-15 (compensatory rest, premium); various Cassation case law"
+    }
+  },
+
+  "FR_EMP_028": {
+    "issue": "Wrong article — L1237-19 governs rupture conventionnelle collective; garden leave is L1234-4/L1234-5",
+    "updated_fields": {
+      "source_law": "Code du travail L1234-4 (notice period continuation); L1234-5 (compensatory indemnity for unworked notice period)",
+      "law_text": "Code du travail L1234-5: 'Lorsque le salarié n'exécute pas le préavis, il a droit, sauf s'il a commis une faute grave, à une indemnité compensatrice. L'inexécution du préavis, notamment en cas de dispense par l'employeur, n'entraîne aucune diminution des salaires et avantages que le salarié aurait perçus s'il avait accompli son travail jusqu'à l'expiration du préavis.' Cass. soc. 27 octobre 2004: An employee placed on garden leave continues to accrue all rights attached to the employment relationship, including paid leave and seniority.",
+      "source_url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006901206"
+    }
+  },
+
+  "FR_EMP_039": {
+    "issue": "Barbier trilogy of 10 July 2002 has three docket numbers — only one cited",
+    "updated_fields": {
+      "source_law": "Cour de cassation, chambre sociale, 10 juillet 2002 (Barbier trilogy) — n°99-43.334, n°00-45.135, n°00-45.387",
+      "law_text": "Cass. soc. 10 juillet 2002 (Barbier trilogy of three companion decisions, n°99-43.334, n°00-45.135, n°00-45.387): A non-competition clause is null where the financial compensation is derisory or manifestly insufficient relative to the constraint imposed on the employee. The minimum compensation is determined by the applicable branch collective bargaining agreement; courts do not themselves impose a universal floor."
+    }
+  },
+
+  "IN_CROSS_CUTTING_NOTE": {
+    "issue": "All four Labour Codes (Wages 2019, IR 2020, OSH 2020, SS 2020) were notified for enforcement only on 21 November 2025. For the 2024-2025 verification window, predecessor statutes were operative.",
+    "affected_rules": ["IN_EMP_002", "IN_EMP_005", "IN_EMP_006", "IN_EMP_009", "IN_EMP_012", "IN_EMP_014", "IN_EMP_015", "IN_EMP_017", "IN_EMP_019", "IN_EMP_020", "IN_EMP_031", "IN_EMP_034", "IN_EMP_035", "IN_EMP_037", "IN_EMP_038", "IN_EMP_039"],
+    "recommended_action": "Add a 'codes_in_force_date' field to each rule citing a Labour Code provision. For rules covering the pre-21-November-2025 period, primary citation should be the predecessor statute (IDA 1947, Factories Act 1948, ID(SO) Act 1946, TU Act 1926, PoW Act 1936, MW Act 1948, ISMW Act 1979, ER Act 1976, MB Act 1961) with the corresponding Code provision listed as 'replaced_by' for forward reference."
+  },
+
+  "IN_EMP_005": {
+    "issue": "OT double-rate is OSH Code §29, not §34 (which is welfare facilities)",
+    "updated_fields": {
+      "source_law": "Occupational Safety, Health and Working Conditions Code 2020, Sections 25, 26, 29 (OT double-rate); Factories Act 1948 §51, §54, §59 (operative pre-21-Nov-2025; 9-hour daily OT trigger)",
+      "law_text": "OSH Code 2020 §25: daily 8-hour cap. §26: weekly hours and 12-hour spread-over. §29: where a worker works in any establishment for more than 8 hours in a day or 48 hours in a week, OT shall be paid at twice the ordinary rate of wages. NOTE: For 2024-2025 (pre-Code-enforcement), Factories Act §59 was operative with 9-hour daily trigger."
+    }
+  },
+
+  "IN_EMP_007": {
+    "issue": "Crèche obligation is MB Act §11A, not §12",
+    "updated_fields": {
+      "source_law": "Maternity Benefit (Amendment) Act 2017 — §5 (26-week maternity for first 2 children), §11A (crèche facility for 50+ employees), §12 (dismissal protection during maternity leave)"
+    }
+  },
+
+  "IN_EMP_009": {
+    "issue": "Fixed-term employment definition is in IR Code §2(o), not §2(r) ('industry')",
+    "updated_fields": {
+      "source_law": "Industrial Relations Code 2020, Section 2(o) (fixed-term employment definition); Code on Social Security 2020 Section 53 proviso (pro-rata gratuity for FTE without 5-year minimum)",
+      "law_text": "IR Code 2020 §2(o): 'Fixed term employment means the engagement of a worker on the basis of a written contract of employment for a fixed period.' The worker is entitled to the same wages and other service conditions as a permanent worker doing the same or similar work, plus pro-rata gratuity after 1 year of service. (For 2024-2025 the Industrial Employment (Standing Orders) Central Rules 1946 governed FTE for the central sphere; IR Code now consolidates.)"
+    }
+  },
+
+  "IN_EMP_019": {
+    "issue": "50-worker threshold is in IR Code §67, not §65 (which gives the formula)",
+    "updated_fields": {
+      "source_law": "Industrial Relations Code 2020, Sections 65 (layoff compensation formula), 67 (50-worker applicability threshold for Chapter IX); IDA 1947 §25C-§25M (operative pre-21-Nov-2025)"
+    }
+  },
+
+  "IN_EMP_021": {
+    "issue": "Equal-pay anchor is CLRA Central Rules Rule 25(2)(v)(a), not §10 (which is the abolition power)",
+    "updated_fields": {
+      "source_law": "Constitution Art. 14, 39(d); Contract Labour (Regulation and Abolition) Act 1970 §10 (power to prohibit contract labour in certain processes); CLRA Central Rules 1971, Rule 25(2)(v)(a) (equal wages for similar work); OSH Code 2020, Section 57; Supreme Court — SAIL v. National Union Waterfront Workers (2001) 7 SCC 1"
+    }
+  },
+
+  "IN_EMP_025": {
+    "issue": "Constitution Art. 23 + Passports Act §12 do not address general HR document retention; topic is governed by other rules",
+    "updated_fields": {
+      "rule_id_renamed_proposal": "IN_EMP_025_passport_confiscation_prohibition",
+      "clause_type": "passport_and_certificate_confiscation_prohibition",
+      "requirement": "No employer may retain an employee's passport, educational certificates, identity documents, or any original personal documents as a condition of employment or as 'security.' Multiple High Courts have ruled that certificate retention amounts to bonded labour and forced labour indicators. Retaining passports specifically is also an offence under the Passports Act 1967.",
+      "source_law": "Constitution Art. 23 (forced labour prohibition); Passports Act 1967 §12 (penalty for unlawfully withholding passport); Bonded Labour System (Abolition) Act 1976 §4-§6; multiple High Court rulings (Delhi HC Sham Lal Narula v. State 1974; Kerala HC Jomon K. Joseph v. Union of India 2021)",
+      "notes": "The previous citation framing was misleading. Document retention is correctly framed as a forced-labour / Passports Act issue, not 'document retention obligations.' General HR record retention (separate topic) is governed by Income Tax Act §44AA/Rule 6F, EPF Schemes, ESI Reg 32, Factories Act §62, Companies Act §128, etc."
+    }
+  },
+
+  "IN_EMP_042": {
+    "issue": "Patents Act §17 is 'date of patent' — Act is silent on employee inventions; this is a known statutory gap",
+    "updated_fields": {
+      "requirement": "Indian Patents Act 1970 is SILENT on the allocation of patent rights between employers and employees. Allocation is governed by the contract of employment (Indian Contract Act 1872 §23) and case law. Copyright Act 1957 §17(c) addresses copyright ownership of works made in the course of employment (employer is first owner absent contrary agreement). Overly broad invention-assignment clauses in employment contracts may be partially unenforceable as restraint of trade under §27 of the Indian Contract Act.",
+      "source_law": "Indian Contract Act 1872 §23, §27 (employer-employee invention agreements); Copyright Act 1957 §17(c) (work-for-hire copyright); Patents Act 1970 — silent on employee inventions; Bishwanath Prasad Radhey Shyam v. Hindustan Metal Industries (1982) 1 SCC 472",
+      "notes": "Important correction: Indian Patents Act §17 is the 'date of patent' provision; it does NOT govern employee inventions. India lacks a statutory employee-invention regime equivalent to Germany's ArbNErfG, France's CPI L611-7, or US 35 USC §261. Allocation is purely contractual."
+    }
+  },
+
+  "IN_EMP_046": {
+    "issue": "IR Code §86 is 'penalties' chapter, not domestic inquiry",
+    "updated_fields": {
+      "source_law": "Industrial Disputes Act 1947 §33 (conditions of service during pendency of proceedings — protected workmen); Industrial Employment (Standing Orders) Central Rules 1946 Schedule I-B (Model Standing Orders, Clause 14 — disciplinary procedure); jurisprudence: Workmen of M/s Firestone Tyre v. Mgmt. (1973) 1 SCC 813; Delhi Cloth & General Mills v. Ludh Budh Singh (1972) 1 SCC 595; Management of Ritz Theatre v. Workmen (1963) AIR SC 295"
+    }
+  },
+
+  "IN_EMP_047": {
+    "issue": "OT trigger differs between Factories Act (9 hr/day) and OSH Code (8 hr/day); flag transition",
+    "updated_fields": {
+      "statutory_minimum": {
+        "factories_act_daily_overtime_trigger_pre_codes": 9,
+        "osh_code_daily_overtime_trigger_post_codes": 8,
+        "weekly_limit": 48,
+        "overtime_rate_multiplier": 2,
+        "overtime_rate_basis": "Basic wages + DA only",
+        "maximum_overtime_hours_factories_act": "50 per quarter",
+        "transition_date": "21 November 2025 (date OSH Code 2020 was notified into force)"
+      },
+      "notes": "IMPORTANT: The OT trigger differs depending on operative regime. Pre-21-Nov-2025: Factories Act §59 → 9-hour daily / 48-hour weekly OT trigger. Post-21-Nov-2025: OSH Code §25, §29 → 8-hour daily / 48-hour weekly trigger. State-level rules under the OSH Code may further refine."
+    }
+  },
+
+  "PH_EMP_002": {
+    "issue": "Outdated PhilHealth and Pag-IBIG rates",
+    "updated_fields": {
+      "statutory_minimum": {
+        "SSS": "14% in 2024 (9.5% employer / 4.5% employee on monthly salary credit; rates increase per RA 11199 schedule)",
+        "PhilHealth_2024_onwards": "5% of monthly basic salary (split 2.5%/2.5% employee/employer); ceiling PHP 100,000 monthly salary",
+        "PagIBIG_from_Feb_2024": "2% on Monthly Fund Salary up to PHP 10,000 ceiling (employee PHP 200, employer PHP 200 maximum); rates per HDMF Circular 460 (2023)"
+      },
+      "common_violation": "Contract silent on statutory contributions, or contractor classification used to avoid contribution obligations. Using outdated 4% PhilHealth rate or PHP 5,000 Pag-IBIG MFS ceiling.",
+      "notes": "PhilHealth rate raised to 5% effective 2024 per RA 11223 schedule. Pag-IBIG MFS ceiling doubled from PHP 5,000 to PHP 10,000 effective February 2024 per HDMF Circular 460. Verify current rates: https://www.philhealth.gov.ph and https://www.pagibigfund.gov.ph"
+    }
+  },
+
+  "TH_EMP_003": {
+    "issue": "Section misallocation — §28 covers weekly holiday, not break rule",
+    "updated_fields": {
+      "source_law": "Labour Protection Act B.E. 2541 (1998), Sections 23 (working hours 8/48 normal, 7/42 hazardous), 27 (1-hour break after 5 consecutive hours), 28 (weekly holiday)",
+      "law_text": "LPA §23: 8 hours per day / 48 hours per week (or 7/42 for hazardous work). LPA §27: An employer shall arrange for an employee to have a rest period during working hours of not less than one hour after the employee has worked for not more than five consecutive hours. LPA §28: An employee is entitled to at least 1 weekly holiday with not more than 6 days between holidays."
+    }
+  },
+
+  "TH_EMP_004": {
+    "issue": "36hr/week OT cap is in §26, not §24",
+    "updated_fields": {
+      "source_law": "Labour Protection Act B.E. 2541 (1998), Sections 26 (36hr/week OT cap), 61, 62, 63 (rates), 24 (consent for OT)",
+      "statutory_minimum": {
+        "overtime_working_day_multiplier": 1.5,
+        "holiday_work_multiplier": 2.0,
+        "overtime_on_holiday_multiplier": 3.0,
+        "employee_consent_required": true,
+        "max_overtime_hours_per_week": 36,
+        "max_overtime_section": "§26"
+      }
+    }
+  },
+
+  "TH_EMP_005": {
+    "issue": "Minimum wage range outdated — actual 2025 rates are ฿337-฿400/day",
+    "updated_fields": {
+      "statutory_minimum": {
+        "approximate_daily_rate_thb_2025": "฿337-฿400 depending on province",
+        "highest_rate_thb_2025": 400,
+        "highest_rate_provinces": "Bangkok, Chachoengsao, Chonburi, Phuket, Rayong, Koh Samui (and tier-2-4 hotels and entertainment venues nationwide from 1 July 2025)",
+        "lowest_rate_thb_2025": 337,
+        "lowest_rate_provinces": "Narathiwat, Pattani, Yala",
+        "basis": "Per working day",
+        "applies_to": "All employees including foreign nationals",
+        "verify_current_rates_url": "https://www.labour.go.th"
+      },
+      "remediation_template": "The Employee's wages shall not be less than the applicable minimum wage rate prescribed by the Wage Committee for the [province] province, as amended from time to time. Current minimum wage rates effective 2025 range from ฿337/day to ฿400/day depending on province.",
+      "last_updated": "2025-07-01"
+    }
+  },
+
+  "TH_EMP_007": {
+    "issue": "Sick leave is §32 + §57, not §32 + §33 (which is sterilization leave)",
+    "updated_fields": {
+      "source_law": "Labour Protection Act B.E. 2541 (1998), Sections 32 (sick leave entitlement and medical certificate threshold), 57 (paid sick leave up to 30 working days/year)",
+      "law_text": "LPA §32: Employee entitled to sick leave for as long as actually sick; medical certificate may be required for absences of 3+ consecutive working days. LPA §57: Employer must pay wages during sick leave for up to 30 working days per year."
+    }
+  },
+
+  "TH_EMP_010": {
+    "issue": "180 days max compensation is not statutory; courts have wide discretion",
+    "updated_fields": {
+      "statutory_minimum": {
+        "protected_grounds_no_dismissal": ["union activity", "filing labour complaint", "pregnancy", "exercise of LPA rights"],
+        "valid_termination_without_severance": ["dishonesty", "intentional damage", "gross negligence", "rule violation after warning", "3-day absence", "criminal conviction"],
+        "unfair_dismissal_remedy": "Reinstatement OR compensation determined by Labour Court considering tenure, age, and circumstances (NO statutory cap; awards regularly exceed 180 days for long-tenured employees)"
+      },
+      "law_text": "LPA §119 lists 6 grounds permitting termination without notice or severance. Establishment of Labour Courts and Labour Court Procedure Act B.E. 2522 grants the Labour Court discretionary power under §49 to determine reinstatement or compensation considering all circumstances; there is NO statutory 180-day cap on compensation for unfair dismissal."
+    }
+  },
+
+  "TH_EMP_011": {
+    "issue": "Reserved-occupations count outdated — post-Feb 2022 reform reduced list to ~27",
+    "updated_fields": {
+      "statutory_minimum": {
+        "work_permit_required": "Yes, unless exempted under Article 154",
+        "employer_liability": "Fine 10,000 to 100,000 THB per unauthorised alien employee",
+        "employee_liability": "Fine up to 50,000 THB; deportation",
+        "reserved_occupations_for_thais": "Approximately 27 occupations under the 3 February 2022 Reserved-Occupations Regulation (some fully prohibited, some allowed under conditions). Categories include: woodcarving, driving, manual labour, accounting work (with exceptions), legal work (with exceptions), agency work, hairdressing, and others."
+      },
+      "notes": "Royal Decree on Foreign Workers Management B.E. 2560/2017 (replaced earlier Working of Aliens Act). Reserved Occupations Regulation revised 3 February 2022 reducing the list from 39 to ~27. https://www.doe.go.th/prd/en/laws_regulations/param/site/29"
+    }
+  },
+
+  "GB_EMP_003": {
+    "issue": "NLW £11.44 was Apr 2024-Mar 2025; from 1 April 2025 NLW is £12.21",
+    "updated_fields": {
+      "statutory_minimum": {
+        "nlw_21_and_over_2024_25": "£11.44/hour (1 Apr 2024 – 31 Mar 2025)",
+        "nlw_21_and_over_2025_26": "£12.21/hour (from 1 Apr 2025)",
+        "nmw_18_to_20_2024_25": "£8.60/hour",
+        "nmw_18_to_20_2025_26": "£10.00/hour",
+        "nmw_under_18_2025_26": "£7.55/hour",
+        "apprentice_rate_2025_26": "£7.55/hour"
+      },
+      "notes": "Rates updated annually each April. Always verify current rates: https://www.gov.uk/national-minimum-wage-rates. Source: Low Pay Commission 2025 Uprating Report."
+    }
+  },
+
+  "GB_EMP_005": {
+    "issue": "2024/25 ET caps wrong — max compensatory £115,115; weekly pay cap £700; basic award max £21,000",
+    "updated_fields": {
+      "statutory_minimum": {
+        "qualifying_period": "2 years continuous service (except automatically unfair reasons)",
+        "fair_reasons": ["capability", "conduct", "redundancy", "statutory illegality", "SOSR"],
+        "basic_award_max_2024_25": "£21,000 (30 × £700 weekly pay cap)",
+        "compensatory_award_max_2024_25": "£115,115 or 52 weeks pay (whichever lower)",
+        "weekly_pay_cap_2024_25": "£700"
+      },
+      "notes": "Caps updated annually each April per Employment Rights (Increase of Limits) Order. 2024/25 figures per SI 2024/213, effective 6 April 2024. Source: https://www.legislation.gov.uk/uksi/2024/213/schedule/made"
+    }
+  },
+
+  "GB_EMP_009": {
+    "issue": "SMP rate outdated — £172.48 was 2023/24; from 7 Apr 2024 it is £184.03",
+    "updated_fields": {
+      "statutory_minimum": {
+        "maternity_leave": "52 weeks (26 OML + 26 AML)",
+        "statutory_maternity_pay_2024_25": "6 weeks at 90% of average earnings then up to 33 weeks at £184.03/week (from 7 April 2024)",
+        "statutory_maternity_pay_2025_26": "6 weeks at 90% then up to 33 weeks at £187.18/week (from April 2025)",
+        "paternity_leave": "2 weeks",
+        "shared_parental_leave": "Up to 50 weeks",
+        "parental_bereavement_leave": "2 weeks",
+        "redundancy_protection": "From pregnancy notification to 18 months after birth"
+      }
+    }
+  },
+
+  "GB_EMP_014": {
+    "issue": "Weekly pay cap £643 outdated — now £700 (2024/25)",
+    "updated_fields": {
+      "statutory_minimum": {
+        "qualifying_service": "2 years",
+        "statutory_redundancy_pay": "0.5 weeks pay per year (under 22), 1 week (22-40), 1.5 weeks (41+), max 20 years",
+        "weekly_pay_cap_2024_25": "£700",
+        "max_statutory_redundancy_payment_2024_25": "£21,000",
+        "collective_consultation_20_to_99": "30 days before first dismissal",
+        "collective_consultation_100_plus": "45 days before first dismissal",
+        "protective_award_max": "90 days gross pay per employee"
+      }
+    }
+  },
+
+  "US_EMP_006": {
+    "issue": "'9 federal protected classes' is informal; recommend enumerating",
+    "updated_fields": {
+      "statutory_minimum": {
+        "protected_classes_enumerated": ["race", "color", "national origin", "sex (incl. pregnancy/sexual orientation/gender identity per Bostock v. Clayton County 2020)", "religion", "age 40+", "disability", "genetic information", "veteran/military status (USERRA)"],
+        "covered_employer_size_title_vii": 15,
+        "covered_employer_size_adea": 20,
+        "eeoc_waiver": "Right to file EEOC charge cannot be waived pre-dispute"
+      }
+    }
+  },
+
+  "US_EMP_007": {
+    "issue": "AB5 is now Cal Lab Code §2775, not §2750.3 (relocated by AB 2257 effective Sept 4, 2020)",
+    "updated_fields": {
+      "law_text": "California Lab. Code §2775 (codifying AB5 ABC test, post AB 2257 relocation effective 4 September 2020): A person providing labour or services for remuneration shall be considered an employee rather than an independent contractor unless the hiring entity demonstrates that all three conditions are satisfied: (A) the person is free from the control and direction of the hiring entity; (B) the person performs work that is outside the usual course of the hiring entity's business; (C) the person is customarily engaged in an independently established trade, occupation, or business.",
+      "source_law": "FLSA economic reality test; IRS Rev. Rul. 87-41; California Lab. Code §2775 et seq. (formerly §2750.3, relocated by AB 2257)",
+      "statutory_minimum": {
+        "tests": {
+          "federal_dol": "Economic Reality Test",
+          "irs": "Behavioural Control, Financial Control, Type of Relationship",
+          "california_abc": "A: free from control; B: work outside usual business; C: independently established trade"
+        },
+        "california_law": "AB5 codified at Cal. Lab. Code §2775 et seq. (post AB 2257 effective 4 Sept 2020)"
+      }
+    }
+  },
+
+  "US_EMP_019": {
+    "issue": "WA non-compete 2024 threshold is $120,559.99, not $116,593.18 (which was 2023)",
+    "updated_fields": {
+      "statutory_minimum": {
+        "disclosure_timing": "No later than acceptance of offer of employment",
+        "minimum_employee_income_usd_2024": 120559.99,
+        "minimum_employee_income_usd_2025": 123394.17,
+        "minimum_independent_contractor_income_usd_2024": 301399.98,
+        "maximum_duration_months": 18,
+        "independent_consideration_required_if_post_hire": true,
+        "layoff_triggered_review_period_business_days": 10,
+        "penalty_minimum_usd": 5000
+      },
+      "notes": "Threshold adjusted annually by WA L&I per CPI. Verify current threshold: https://www.lni.wa.gov/workers-rights/workplace-policies/non-compete-agreements"
+    }
+  },
+
+  "US_EMP_025": {
+    "issue": "Cal Lab Code §432.6 was permanently enjoined (Chamber v. Bonta 9th Cir. Feb 2023)",
+    "updated_fields": {
+      "statutory_minimum": {
+        "federal_2022_act": "Pre-dispute arbitration of sexual harassment/assault claims is voidable at claimant's election (9 USC §402)",
+        "california_ab51_status": "Cal Lab Code §432.6 PERMANENTLY ENJOINED following Chamber of Commerce v. Bonta (9th Cir. 15 Feb 2023). Federal court held FAA preempts §432.6 as applied to FAA-covered arbitration agreements. NOT enforceable against most employers.",
+        "new_york_cplr_7515": "Mandatory arbitration of sexual harassment claims prohibited (largely preempted by FAA per federal courts post-EFAA)",
+        "washington_rcw_49_44_085": "Cannot require waiver of discrimination disclosure rights"
+      }
+    }
+  },
+
+  "US_EMP_027": {
+    "issue": "SPD timing nuance: 90 days for new participants; 120 days for new plans",
+    "updated_fields": {
+      "statutory_minimum": {
+        "spd_delivery_to_new_participants_days": 90,
+        "spd_delivery_for_new_plans_days": 120,
+        "aca_coverage_waiting_period_max_days": 90,
+        "wa_requirement": "General benefits description in job posting",
+        "ca_requirement": "Pay scale in posting (benefits disclosure recommended)",
+        "offer_letter_best_practice": ["health insurance availability", "waiting period", "employer contribution", "retirement plan and match", "PTO policy", "equity if applicable"]
+      },
+      "law_text": "ERISA §104(b)(1)(A) (29 USC §1024): SPD must be furnished to each participant within 90 days after becoming covered. ERISA §104(b)(1)(B): SPD must be furnished within 120 days after the plan first becomes subject to ERISA."
+    }
+  },
+
+  "US_EMP_028": {
+    "issue": "AB 2188 is at Gov Code §12954 (FEHA), NOT Labor Code §1700",
+    "updated_fields": {
+      "source_law": "California Government Code §12954 (AB 2188, effective 2024); NYC Admin Code §8-107(31); Drug-Free Workplace Act 41 USC §8101",
+      "law_text": "California Government Code §12954 (added by AB 2188, effective 1 January 2024): It is unlawful for an employer to discriminate against a person in hiring, termination, or any term or condition of employment based on the person's use of cannabis off the job and away from the workplace. Drug screening tests that detect non-psychoactive cannabis metabolites in hair, urine, or bodily fluids are prohibited as the basis for adverse employment decisions; impairment-based testing is permitted. Exceptions: federal contractors, safety-sensitive positions, federal mandates."
+    }
+  },
+
+  "US_EMP_032": {
+    "issue": "COBRA '14-day notice' is plan administrator deadline AFTER employer notifies; employer has 30 days to notify administrator",
+    "updated_fields": {
+      "statutory_minimum": {
+        "employer_threshold": "20+ employees",
+        "employer_notice_to_plan_administrator_days": 30,
+        "plan_administrator_notice_to_qualified_beneficiary_days": 14,
+        "continuation_coverage_period_months": 18,
+        "continuation_coverage_disability_extension_months": 29
+      },
+      "law_text": "COBRA 29 USC §1166(a)(2): Employer shall notify the plan administrator within 30 days of a qualifying event. 29 USC §1166(a)(4): Plan administrator shall notify the qualified beneficiary of COBRA rights within 14 days of receiving notice from employer. Total maximum delay from qualifying event to beneficiary notice: 44 days."
+    }
+  },
+
+  "US_EMP_045": {
+    "issue": "Needs Adolph v. Uber (Cal. 2023) and PAGA reform AB 2288/SB 92 (June 2024) updates",
+    "updated_fields": {
+      "statutory_minimum": {
+        "paga_representative_waiver": "Void and unenforceable under Iskanian v. CLS Transportation (Cal. 2014) and Adolph v. Uber Technologies (Cal. 17 July 2023)",
+        "individual_paga_arbitration": "Permissible after Viking River Cruises v. Moriana (U.S. 2022); however per Adolph v. Uber (Cal. 2023), the employee retains standing to pursue non-individual PAGA claims in court even after individual PAGA claims are compelled to arbitration",
+        "paga_2024_reform": "AB 2288 / SB 92 enacted June 2024 substantially reformed PAGA: lower penalties, employer cure rights, manageability standard for claims"
+      },
+      "notes": "Key case law: Iskanian v. CLS Transportation (Cal. 2014); Viking River Cruises v. Moriana, 596 U.S. 639 (2022); Adolph v. Uber Technologies, 14 Cal.5th 1104 (2023). AB 2288/SB 92 PAGA reform effective for cases filed after 19 June 2024."
+    }
+  },
+
+  "VN_EMP_006": {
+    "issue": "7% trained-worker premium not statutorily mandated under Decree 74/2024",
+    "updated_fields": {
+      "statutory_minimum": {
+        "region_1_vnd_month": 4960000,
+        "region_2_vnd_month": 4410000,
+        "region_3_vnd_month": 3860000,
+        "region_4_vnd_month": 3450000,
+        "effective_from": "2024-07-01",
+        "trained_worker_premium": "Not freshly mandated by Decree 74/2024 (was in Decree 38/2022 framework). Where applicable collective agreement or company policy provides for a premium for trained workers, that arrangement remains binding.",
+        "verify_current_url": "https://thuvienphapluat.vn/van-ban/Lao-dong-Tien-luong/Nghi-dinh-74-2024-ND-CP-luong-toi-thieu-vung-2024-612862.aspx"
+      }
+    }
+  },
+
+  "VN_EMP_009": {
+    "issue": "SHUI breakdown double-counts; Social Insurance Law 2024 supersedes 2014 from 1 July 2025",
+    "updated_fields": {
+      "source_law": "Social Insurance Law 2014 (Law 58/2014/QH13) — operative through 30 June 2025; Social Insurance Law 2024 (Law 41/2024/QH15) — operative from 1 July 2025; Labour Code 2019 Art. 168; Decree 143/2018/ND-CP (foreign employees)",
+      "statutory_minimum": {
+        "social_insurance_employer_total_percent": 17.5,
+        "social_insurance_employer_breakdown": "14% retirement/death + 3% sickness/maternity + 0.5% occupational accident",
+        "social_insurance_employee_percent": 8,
+        "health_insurance_employer_percent": 3,
+        "health_insurance_employee_percent": 1.5,
+        "unemployment_insurance_employer_percent": 1,
+        "unemployment_insurance_employee_percent": 1,
+        "total_employer_burden_percent": 21.5,
+        "total_employee_burden_percent": 10.5,
+        "applies_from_contract_months": 1,
+        "law_change_note": "Social Insurance Law 2024 (Law 41/2024/QH15) replaces Law 58/2014/QH13 effective 1 July 2025; rates and structure largely preserved."
+      },
+      "notes": "Previous statutory_minimum double-counted the 0.5% accident insurance as separate from the 17.5% SI total. Corrected: 17.5% SI total INCLUDES the 0.5% accident component. Total employer burden: 21.5% (17.5% SI + 3% HI + 1% UI), not 22%."
+    }
+  },
+
+  "VN_EMP_018": {
+    "issue": "Decree 152/2020 superseded by Decree 219/2025/ND-CP",
+    "updated_fields": {
+      "source_law": "Labour Code 2019, Articles 151-154; Decree 219/2025/ND-CP (effective ~August 2025, replacing Decree 152/2020/ND-CP)",
+      "notes": "Decree 152/2020/ND-CP was replaced by Decree 219/2025/ND-CP. The 2-year max work permit duration with one renewal (max 4 years total) is preserved under the new decree. https://english.luatvietnam.vn/decree-no-219-2025-nd-cp-dated-august-07-2025-of-the-government-on-foreign-workers-in-vietnam-407607-doc1.html"
+    }
+  },
+
+  "VN_EMP_020": {
+    "issue": "Court limitation is 1 year, NOT 3 years",
+    "updated_fields": {
+      "statutory_minimum": {
+        "mandatory_first_step": "Direct negotiation",
+        "conciliation_available": true,
+        "court_access": "People's Court — cannot be waived",
+        "limitation_period_conciliator_months": 6,
+        "limitation_period_arbitration_council_months": 9,
+        "limitation_period_court_year": 1
+      },
+      "law_text": "Labour Code 2019, Article 190(1): Statute of limitations for individual labour disputes: 6 months for request to a labour conciliator; 9 months for request to a labour arbitration council; 1 year for petition to court. (NOT 3 years as previously stated.)"
+    }
+  },
+
+  "VN_EMP_022": {
+    "issue": "Article 169 of Labour Code governs RETIREMENT AGE, not governing law",
+    "updated_fields": {
+      "source_law": "Labour Code 2019 Article 121 (foreign employees rights); Civil Code 2015 Article 683 (governing law for foreign-element contracts)",
+      "law_text": "Labour Code 2019, Article 121: foreign employees lawfully working in Vietnam have the same rights and obligations as Vietnamese employees. (NB: Article 169 of the Labour Code 2019 deals with RETIREMENT AGE, not governing law of employment contracts.) Civil Code 2015, Article 683: For a labour relationship having foreign elements, the law applicable shall be the law agreed upon by the parties; in the absence of agreement, the law of the country where the employee normally performs the work shall apply. Mandatory provisions of Vietnamese labour law apply regardless of governing law choice."
+    }
+  },
+
+  "VN_EMP_023": {
+    "issue": "Fine is VND 20-25M per worker (not 20-40M)",
+    "updated_fields": {
+      "statutory_minimum": {
+        "financial_deposit_allowed": false,
+        "identity_document_confiscation_allowed": false,
+        "fine_per_worker_vnd": "20,000,000 – 25,000,000 (with cap of 75,000,000 for multiple workers); plus mandatory return of documents/deposits with interest",
+        "void_clause": true
+      },
+      "notes": "Decree 12/2022/ND-CP Article 8(2)-(3) imposes fines of VND 20-25 million per affected employee (not 20-40 million as previously stated), capped at VND 75 million for multiple workers. Plus mandatory return of confiscated documents and refund of deposits with interest."
+    }
+  },
+
+  "VN_EMP_032": {
+    "issue": "Benefit rate 60% is in Art. 50, not Art. 57",
+    "updated_fields": {
+      "source_law": "Employment Law 2013 (Law 38/2013/QH13), Articles 43 (eligibility), 50 (60% benefit rate and 3-12 month duration), 57 (vocational training support), 58 (contribution rates: 1% employer / 1% employee / up to 1% state)"
+    }
+  },
+
+  "VN_EMP_034": {
+    "issue": "Inter-shift rest is Article 110, not Article 108",
+    "updated_fields": {
+      "source_law": "Labour Code 2019, Articles 109 (mid-shift breaks 30 min day / 45 min night), 110 (12-hour inter-shift rest), 111 (24-hour weekly rest); NOT Article 108 (which covers public holidays)"
+    }
+  },
+
+  "VN_EMP_015_ADDITIONAL_NOTE": {
+    "applies_to_rule_id": "VN_EMP_015",
+    "issue": "Should flag upcoming Personal Data Protection Law 91/2025/QH15 effective 1 January 2026",
+    "updated_fields": {
+      "notes": "Decree 13/2023 effective 1 July 2023 is the operative regulation. NOTE: Vietnam's full Personal Data Protection Law (Law 91/2025/QH15) was passed and takes effect 1 January 2026. Employers should prepare for transition from Decree 13 to the full Law. Ministry of Public Security administers: https://www.mps.gov.vn"
+    }
+  }
+}
